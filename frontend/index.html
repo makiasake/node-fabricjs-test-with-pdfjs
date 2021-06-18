@@ -1,17 +1,24 @@
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.3/fabric.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.8.349/pdf.min.js"></script>
-  </head>
-  
-  <body>
-      <div>
-        <button onclick="checkPosition()">Position</button>
-        <span style="font-size: 14px"><b>Load PDF</b></span>
-        <input id="pdf-upload" type="file">
-      </div>
-    
-  
-    <canvas id="pdfcanvas"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.3/fabric.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.8.349/pdf.min.js"></script>
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
 
-    <script src="./static/js/index.js"></script>
-  </body>
+<body>
+  <div class="nav-bar">
+    <button id="prev">Anterior</button>
+    <button id="next">Proxima</button>
+    &nbsp; &nbsp;
+    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+    <button onclick="checkPosition()">Obter posição</button>
+    <br>
+    <span style="font-size: 14px"><b>Carregar PDF</b></span>
+    <input id="pdf-upload" type="file">
+  </div>
+
+  <div id="canvas-container" class="canvas">
+    <canvas id="pdfcanvas"></canvas>
+  </div>
+
+  <script src="./static/js/index.js"></script>
+</body>
