@@ -3,19 +3,7 @@ var canvas = new fabric.Canvas("pdfcanvas"),
   pdfDoc = null,
   pageRendering = false,
   file = null,
-  rectExists = false;
-
-var rect = new fabric.Rect({
-  left: 100,
-  top: 50,
-  fill: 'lightgreen',
-  width: 200,
-  height: 100,
-  objectCaching: false,
-  stroke: 'lightgreen',
-  strokeWidth: 4,
-  opacity: 0.2
-});
+  defaultOpacity = 0.5;
 
 document.querySelector("#pdf-upload").addEventListener("change", function (e) {
   renderPage(pageNum, e);
@@ -42,7 +30,8 @@ function renderPage(num, e) {
       pdfDoc = pdf;
 
       pdf.getPage(num).then(function (page) {
-        // you can now use *page* here
+
+        // viewport = pagina
         var viewport = page.getViewport(1.0);
         var canvasEl = document.querySelector("canvas")
         canvasEl.height = viewport.height;
@@ -54,13 +43,7 @@ function renderPage(num, e) {
         }).then(function () {
 
           var bg = canvasEl.toDataURL("image/png");
-          
-          if (!rectExists) {
-            canvas.add(rect);
-            canvas.setActiveObject(rect);
-            rectExists = true;
-          }
-          
+
           fabric.Image.fromURL(bg, function (img) {
             img.scaleToHeight(viewport.height);
             canvas.setHeight(viewport.height);
@@ -79,10 +62,10 @@ function renderPage(num, e) {
 
 function checkPosition() {
   var obj = canvas.getActiveObject();
-  alert("left: " + obj.left + 
-        "\ntop: " + obj.top + 
-        "\nheight: " + obj.height * obj.scaleY + 
-        "\nwidth: " + obj.width * obj.scaleX);
+  alert("left: " + obj.left +
+    "\ntop: " + obj.top +
+    "\nheight: " + obj.height * obj.scaleY +
+    "\nwidth: " + obj.width * obj.scaleX);
   console.log("left: " + obj.left + ", top: " + obj.top + ", height: " + obj.height * obj.scaleY + ", width: " + obj.width * obj.scaleX);
 }
 
@@ -111,3 +94,20 @@ function onPrevPage() {
   queueRenderPage(pageNum);
 }
 document.getElementById('prev').addEventListener('click', onPrevPage);
+
+function Add() {
+  var rect = new fabric.Rect({
+    left: 100,
+    top: 50,
+    fill: 'lightgreen',
+    width: 200,
+    height: 100,
+    objectCaching: false,
+    stroke: 'lightgreen',
+    strokeWidth: 4,
+    opacity: defaultOpacity
+  });
+
+  canvas.add(rect);
+  canvas.setActiveObject(rect);
+}

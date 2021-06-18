@@ -13,3 +13,10 @@
   padding: 10px;
   text-align: center; 
 }
+
+.nav-bar-left {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: left; 
+}
