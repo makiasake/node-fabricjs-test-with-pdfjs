@@ -95,7 +95,7 @@ function onPrevPage() {
 }
 document.getElementById('prev').addEventListener('click', onPrevPage);
 
-function Add() {
+function add() {
   var rect = new fabric.Rect({
     left: 100,
     top: 50,
@@ -105,9 +105,57 @@ function Add() {
     objectCaching: false,
     stroke: 'lightgreen',
     strokeWidth: 4,
-    opacity: defaultOpacity
+    opacity: defaultOpacity,
+    hasRotatingPoint: false
   });
 
   canvas.add(rect);
   canvas.setActiveObject(rect);
+}
+
+function loadLayout() {
+  var mockRect = new fabric.Rect({
+    left: 22.124278247413486,
+    top: 60.03227110270158,
+    fill: 'lightgreen',
+    width: 338.79767473300996,
+    height: 40.34097469859059,
+    objectCaching: false,
+    stroke: 'lightgreen',
+    strokeWidth: 4,
+    opacity: defaultOpacity,
+    hasRotatingPoint: false
+  });
+
+  canvas.add(mockRect);
+
+  mockRect = new fabric.Rect({
+    left: 381.1896039928488,
+    top: 264.81074266792814,
+    fill: 'lightgreen',
+    width: 169.81407191236798,
+    height: 90.71267824115502,
+    objectCaching: false,
+    stroke: 'lightgreen',
+    strokeWidth: 4,
+    opacity: defaultOpacity,
+    hasRotatingPoint: false
+  });
+
+  canvas.add(mockRect);
+
+  mockRect = new fabric.Rect({
+    left: 27.75363603880217,
+    top: 547.2733985073057,
+    fill: 'lightgreen',
+    width: 337.9218674612645,
+    height: 116.86460980848406,
+    objectCaching: false,
+    stroke: 'lightgreen',
+    strokeWidth: 4,
+    opacity: defaultOpacity,
+    hasRotatingPoint: false
+  });
+
+  canvas.add(mockRect);
 }
